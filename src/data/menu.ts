@@ -11,6 +11,10 @@ const menu = [
 		url: "/formik-yup",
 		text: "Formik+Yup",
 	},
+	{
+		url: "/react-hook-forms",
+		text: "ReactHookForms",
+	},
 ];
 
 export default menu;
