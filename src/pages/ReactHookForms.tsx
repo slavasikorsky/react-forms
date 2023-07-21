@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
 import { FormHeading } from "../components/FormHeading";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IFormInput {
 	firstName: string;
@@ -10,14 +11,13 @@ interface IFormInput {
 }
 
 export const ReactHookForms = () => {
-	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm<IFormInput>();
 	const onSubmit: SubmitHandler<IFormInput> = (data) => {
-		setIsSubmitting(true);
+		toast.success("Sended!");
 		console.log(data);
 	};
 	return (
@@ -25,7 +25,6 @@ export const ReactHookForms = () => {
 			<div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-sm">
 				<FormHeading title="React Hook Form" />
 				<form onSubmit={handleSubmit(onSubmit)} className="w-full mt-3">
-					{isSubmitting && <p className="text-green-400">Sended!</p>}
 					<div className="flex flex-col justify-between mb-4">
 						<label
 							htmlFor="name"
@@ -42,7 +41,7 @@ export const ReactHookForms = () => {
 							/>
 						</label>
 						<p className="text-sm text-red-400">
-							{errors.firstName && "First name is required"}
+							{errors.firstName && "Please write your name"}
 						</p>
 					</div>
 					<div className="flex flex-col justify-between mb-4">
@@ -103,11 +102,13 @@ export const ReactHookForms = () => {
 					<button
 						type="submit"
 						className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25"
+						disabled={isSubmitSuccessful}
 					>
 						Submit
 					</button>
 				</form>
 			</div>
+			<ToastContainer />
 		</div>
 	);
 };
