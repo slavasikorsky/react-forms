@@ -1,6 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import PublicLayout from "../layout/PublicLayout";
-import { Home, FormikForm, FormikYup, ReactHookForms } from "../pages";
+import {
+	Home,
+	FormikForm,
+	FormikYup,
+	ReactHookForms,
+	ReactHookFormsYup,
+} from "../pages";
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +28,10 @@ const router = createBrowserRouter([
 			{
 				path: "/react-hook-forms",
 				element: <ReactHookForms />,
+			},
+			{
+				path: "/react-hook-forms-yup",
+				element: <ReactHookFormsYup />,
 			},
 		],
 	},

@@ -15,6 +15,10 @@ const menu = [
 		url: "/react-hook-forms",
 		text: "ReactHookForms",
 	},
+	{
+		url: "/react-hook-forms-yup",
+		text: "ReactHookForms+Yup",
+	},
 ];
 
 export default menu;
