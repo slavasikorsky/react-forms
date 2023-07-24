@@ -1,0 +1,15 @@
+{
+    "greeting": "React forms",
+    "buttonLabel": "En",
+    "home": "Home page",
+    "lorem": "Lorem ipsum dolor sit amet, autem malorum ad vim, usu ex eros nusquam, pri aliquid molestie an. Has aliquam nostrum cu. Sea modus fierent platonem id. Habeo delectus percipit ut usu, probo legimus evertitur mei cu. Putent persius signiferumque ea est.",
+    "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "password": "Password",
+        "age": "Age"
+    },
+    "submit": "Submit"
+}
