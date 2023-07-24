@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormHeading } from "../components/FormHeading";
 
 const FormSchema = Yup.object().shape({
@@ -21,6 +22,7 @@ const FormSchema = Yup.object().shape({
 });
 
 export const FormikYup = () => {
+	const { t } = useTranslation();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	return (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -59,7 +61,7 @@ export const FormikYup = () => {
 									htmlFor="name"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Name
+									{t("fields.firstName")}
 									<input
 										type="text"
 										name="name"
@@ -78,7 +80,7 @@ export const FormikYup = () => {
 									htmlFor="tel"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Telephone
+									{t("fields.phone")}
 									<input
 										type="tel"
 										name="tel"
@@ -97,7 +99,7 @@ export const FormikYup = () => {
 									htmlFor="email"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Email
+									{t("fields.email")}
 									<input
 										type="email"
 										name="email"
@@ -118,7 +120,7 @@ export const FormikYup = () => {
 									htmlFor="password"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Password
+									{t("fields.password")}
 									<input
 										type="password"
 										name="password"
@@ -139,7 +141,7 @@ export const FormikYup = () => {
 								className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25"
 								disabled={isSubmitting}
 							>
-								Submit
+								{t("submit")}
 							</button>
 						</form>
 					)}

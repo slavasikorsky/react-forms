@@ -1,5 +1,6 @@
 import { Formik, FormikErrors } from "formik";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FormHeading } from "../components/FormHeading";
 
 interface FormValues {
@@ -10,6 +11,7 @@ interface FormValues {
 }
 
 export const FormikForm = () => {
+	const { t } = useTranslation();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	return (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -62,7 +64,7 @@ export const FormikForm = () => {
 									htmlFor="name"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Name
+									{t("fields.firstName")}
 									<input
 										type="text"
 										name="name"
@@ -81,7 +83,7 @@ export const FormikForm = () => {
 									htmlFor="tel"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Telephone
+									{t("fields.phone")}
 									<input
 										type="tel"
 										name="tel"
@@ -97,7 +99,7 @@ export const FormikForm = () => {
 									htmlFor="email"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Email
+									{t("fields.email")}
 									<input
 										type="email"
 										name="email"
@@ -118,7 +120,7 @@ export const FormikForm = () => {
 									htmlFor="password"
 									className="block text-sm font-medium leading-6 text-gray-900 cursor-pointer"
 								>
-									Password
+									{t("fields.password")}
 									<input
 										type="password"
 										name="password"
@@ -137,7 +139,7 @@ export const FormikForm = () => {
 								className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25"
 								disabled={isSubmitting}
 							>
-								Submit
+								{t("submit")}
 							</button>
 						</form>
 					)}
