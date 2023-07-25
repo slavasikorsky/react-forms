@@ -11,5 +11,16 @@
         "password": "Password",
         "age": "Age"
     },
+    "errors": {
+        "name": "Please write your name",
+        "lastName": "Please write your Last Name",
+        "email": "Please enter a valid email address",
+        "age": "Please write your age",
+        "ageMore": "Age must be more than 18",
+        "ageLess": "Age must be less than 99",
+        "password": "Please enter your password",
+        "phone": "Enter your phone number"
+    },
+    "send": "Sended!",
     "submit": "Submit"
 }

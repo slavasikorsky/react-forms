@@ -13,20 +13,21 @@ interface IFormInput {
 	email: string;
 }
 
-const validationSchema = yup.object({
-	firstName: yup.string().required("Required"),
-	lastName: yup.string().required("Required"),
-	age: yup
-		.number()
-		.typeError("Please write your age")
-		.min(18, "Age must be more than 18")
-		.max(99, "Age must be less than 99")
-		.required(),
-	email: yup.string().email().required("Please enter valid email"),
-});
-
 export const ReactHookFormsYup = () => {
 	const { t } = useTranslation();
+
+	const validationSchema = yup.object({
+		firstName: yup.string().required(t("errors.name")),
+		lastName: yup.string().required(t("errors.lastName")),
+		age: yup
+			.number()
+			.typeError(t("errors.age"))
+			.min(18, t("errors.ageMore"))
+			.max(99, t("errors.ageLess"))
+			.required(),
+		email: yup.string().email().required(t("errors.email")),
+	});
+
 	const {
 		register,
 		handleSubmit,

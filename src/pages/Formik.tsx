@@ -17,7 +17,6 @@ export const FormikForm = () => {
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 			<div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-sm">
 				<FormHeading title="Formik" />
-
 				<Formik
 					initialValues={{
 						name: "",
@@ -57,7 +56,7 @@ export const FormikForm = () => {
 					}) => (
 						<form onSubmit={handleSubmit} className="w-full mt-3">
 							{isSubmitting && (
-								<p className="text-green-400">Sended!</p>
+								<p className="text-green-400">{t("send")}</p>
 							)}
 							<div className="flex flex-col justify-between mb-4">
 								<label
@@ -75,7 +74,9 @@ export const FormikForm = () => {
 									/>
 								</label>
 								<p className="text-sm text-red-400">
-									{errors.name && touched.name && errors.name}
+									{errors.name &&
+										touched.name &&
+										t("errors.name")}
 								</p>
 							</div>
 							<div className="flex flex-col justify-between mb-4">
@@ -112,7 +113,7 @@ export const FormikForm = () => {
 								<p className="text-sm text-red-400">
 									{errors.email &&
 										touched.email &&
-										errors.email}
+										t("errors.email")}
 								</p>
 							</div>
 							<div className="flex flex-col justify-between mb-4">
@@ -132,7 +133,7 @@ export const FormikForm = () => {
 								</label>
 								{errors.password &&
 									touched.password &&
-									errors.password}
+									t("errors.password")}
 							</div>
 							<button
 								type="submit"

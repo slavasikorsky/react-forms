@@ -19,7 +19,7 @@ export const ReactHookForms = () => {
 		formState: { errors, isSubmitSuccessful },
 	} = useForm<IFormInput>();
 	const onSubmit: SubmitHandler<IFormInput> = (data) => {
-		toast.success("Sended!");
+		toast.success(t("send"));
 		console.log(data);
 	};
 	return (
@@ -43,7 +43,7 @@ export const ReactHookForms = () => {
 							/>
 						</label>
 						<p className="text-sm text-red-400">
-							{errors.firstName && "Please write your name"}
+							{errors.firstName && t("errors.name")}
 						</p>
 					</div>
 					<div className="flex flex-col justify-between mb-4">
@@ -78,7 +78,7 @@ export const ReactHookForms = () => {
 							/>
 						</label>
 						<p className="text-sm text-red-400">
-							{errors.age && "Please write your real age"}
+							{errors.age && t("errors.age")}
 						</p>
 					</div>
 					<div className="flex flex-col justify-between mb-4">
@@ -98,7 +98,7 @@ export const ReactHookForms = () => {
 							/>
 						</label>
 						<p className="text-sm text-red-400">
-							{errors.email && "Please write valid email"}
+							{errors.email && t("errors.email")}
 						</p>
 					</div>
 					<button

@@ -4,25 +4,24 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormHeading } from "../components/FormHeading";
 
-const FormSchema = Yup.object().shape({
-	name: Yup.string()
-		.min(2, "Too Short!")
-		.max(50, "Too Long!")
-		.required("Name is required"),
-
-	tel: Yup.string()
-		.required("Phone number is required")
-		.matches(/(7|8|9)\d{9}/, "Invalid phone number"),
-
-	email: Yup.string().email().required("Email is required"),
-
-	password: Yup.string()
-		.required("Password is required")
-		.min(6, "Password is too short - should be 6 chars minimum"),
-});
-
 export const FormikYup = () => {
 	const { t } = useTranslation();
+
+	const FormSchema = Yup.object().shape({
+		name: Yup.string()
+			.min(2, t("errors.name"))
+			.max(50, t("errors.name"))
+			.required(),
+
+		tel: Yup.string()
+			.required()
+			.matches(/(7|8|9)\d{9}/),
+
+		email: Yup.string().email().required(),
+
+		password: Yup.string().required().min(6),
+	});
+
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	return (
 		<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -54,7 +53,7 @@ export const FormikYup = () => {
 					}) => (
 						<form onSubmit={handleSubmit} className="w-full mt-3">
 							{isSubmitting && (
-								<p className="text-green-400">Sended!</p>
+								<p className="text-green-400">{t("send")}</p>
 							)}
 							<div className="flex flex-col justify-between mb-4">
 								<label
@@ -72,7 +71,9 @@ export const FormikYup = () => {
 									/>
 								</label>
 								<p className="text-sm text-red-400">
-									{errors.name && touched.name && errors.name}
+									{errors.name &&
+										touched.name &&
+										t("errors.name")}
 								</p>
 							</div>
 							<div className="flex flex-col justify-between mb-4">
@@ -91,7 +92,9 @@ export const FormikYup = () => {
 									/>
 								</label>
 								<p className="text-sm text-red-400">
-									{errors.tel && touched.tel && errors.tel}
+									{errors.tel &&
+										touched.tel &&
+										t("errors.phone")}
 								</p>
 							</div>
 							<div className="flex flex-col justify-between mb-4">
@@ -112,7 +115,7 @@ export const FormikYup = () => {
 								<p className="text-sm text-red-400">
 									{errors.email &&
 										touched.email &&
-										errors.email}
+										t("errors.email")}
 								</p>
 							</div>
 							<div className="flex flex-col justify-between mb-4">
@@ -133,7 +136,7 @@ export const FormikYup = () => {
 								<p className="text-sm text-red-400">
 									{errors.password &&
 										touched.password &&
-										errors.password}
+										t("errors.password")}
 								</p>
 							</div>
 							<button
